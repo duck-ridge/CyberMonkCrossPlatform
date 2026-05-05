@@ -1,17 +1,18 @@
 extends Node2D
-
+class_name Sengshe
 
 var is_occupied: bool = false
 var can_contain_num: int
 var is_contain_num: int = 0
 var occupied_monk: CharacterBody2D
 
-#enum MonkType {
-	#LITTLE,
-	#BIG,
-	#MASTER,
-	#VISITOR
-#}
+
+enum MonkType {
+	LITTLE,
+	ZHIKE,
+	YUNYOU,
+	JING
+}
 
 func _ready():
 	$MenuPanel.hide()
@@ -53,17 +54,15 @@ func refill_based_on_is_contain_num(contain_num: int):
 		if i <= contain_num:
 			
 			var char = $MonkResidence.get_child(i - 1)
-			var monk_code
-			print(char)
-			print(monk_code)
-			print(char.monk_code)
-			match char.monk_code:
-				0:
-					monk_code = 0
-				1:
-					monk_code = 1
-				"_":
-					print("false: building sengshe")
+			#var monk_code
+			var monk_code =  char.monk_code
+			#match char.monk_code:
+				#0:
+					#monk_code = 0
+				#1:
+					#monk_code = 1
+				#"_":
+					#print("false: building sengshe")
 			c.monk_code = monk_code
 			c.is_occupied = true
 		else:
@@ -100,6 +99,16 @@ func hide_menu():
 		$MenuPanel.hide()
 	$MenuPanel.hide()
 
+var mouse_position
+var distance_to_sengshe
+func _physics_process(delta):
+	distance_to_sengshe = get_local_mouse_position().length()
+	if distance_to_sengshe < 70:
+		$PanelContainer.show()
+	else:
+		$PanelContainer.hide()
+	
+	
 func registered_monk_release(index: int):
 	var removed_monk = $MonkResidence.get_child(index)
 	var world = get_node("../..")

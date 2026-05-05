@@ -1,14 +1,14 @@
 extends CharacterBody2D
-class_name MonkBig
+class_name MonkYunyou
 
 enum MonkType {
 	LITTLE,
-	BIG,
-	MASTER,
-	VISITOR
+	ZHIKE,
+	YUNYOU,
+	JING
 }
 
-var monk_code = MonkType.BIG
+var monk_code = MonkType.YUNYOU
 
 var is_grabbed: bool = false
 var gravity = 980

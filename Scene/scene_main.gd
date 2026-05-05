@@ -2,7 +2,6 @@ extends Node2D
 
 var registered_monk
 var gongde_sum: int = 0
-		
 var scroll_x
 
 # Called when the node enters the scene tree for the first time.
@@ -102,6 +101,8 @@ func _unhandled_input(event):
 			else:
 				for m in $MonkSystem.get_children():
 					m.release_grab()
+
+	
 func _input(event):
 	scroll_x = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_pressed("ui_accept"):

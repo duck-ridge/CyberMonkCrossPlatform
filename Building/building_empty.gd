@@ -9,7 +9,8 @@ enum hus_set_type {BASIC, MAIN, SIDE, OTHER}
 func _ready():
 	hide_menu()
 	$AniSprite.play("default")
-
+	for menu in $HusMenuSystem.get_children():
+		menu.hide()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -32,6 +33,7 @@ func hide_menu():
 			tween.tween_property(menu, "scale", Vector2(0, 1), 0.2).from_current()
 			await tween.finished
 			menu.hide()
+
 		menu.hide()
 		menu.scale = Vector2(0, 1)
 

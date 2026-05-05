@@ -8,9 +8,9 @@ var gravity = 980
 
 enum MonkType {
 	LITTLE,
-	BIG,
-	MASTER,
-	VISITOR
+	ZHIKE,
+	YUNYOU,
+	JING
 }
 
 var monk_code = MonkType.LITTLE

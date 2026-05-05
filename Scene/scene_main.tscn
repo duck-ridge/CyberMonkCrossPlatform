@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://j35ldbwss7x2" path="res://Building/building_daxiongbaodian.tscn" id="5_7xc3w"]
 [ext_resource type="Script" path="res://Scene/MuyuButton.gd" id="5_vc3tu"]
 [ext_resource type="AudioStream" uid="uid://d1at1f1v44hpm" path="res://Asset/Sound/MuyuSound.mp3" id="6_y87uw"]
-[ext_resource type="PackedScene" uid="uid://dtt6mmr6him0s" path="res://Char/monk_big.tscn" id="7_lq5v1"]
+[ext_resource type="PackedScene" uid="uid://dtt6mmr6him0s" path="res://Char/monk_yunyou.tscn" id="7_lq5v1"]
 [ext_resource type="Texture2D" uid="uid://dgjk8uc8qs3x0" path="res://Asset/Muyu/Wooden_normal.png" id="7_oosbh"]
 [ext_resource type="Texture2D" uid="uid://cakl2nxir8lgd" path="res://Asset/Muyu/Wooden_hover.png" id="8_odmnq"]
 [ext_resource type="PackedScene" uid="uid://dnydyp7pvylm2" path="res://Building/building_luohantang.tscn" id="11_lyodh"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cd4at7mbs640n"
-path="res://.godot/imported/LittleMK.png-7fc96e38b2fb80c3b12d7cc2e0a456c2.ctex"
+uid="uid://dy0u4dhbi6htd"
+path="res://.godot/imported/MonkJing.png-56043b81ae374f6a7f83b9266e48599f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Asset/Profile/LittleMK.png"
-dest_files=["res://.godot/imported/LittleMK.png-7fc96e38b2fb80c3b12d7cc2e0a456c2.ctex"]
+source_file="res://Asset/Monks/MonkJing/MonkJing.png"
+dest_files=["res://.godot/imported/MonkJing.png-56043b81ae374f6a7f83b9266e48599f.ctex"]
 
 [params]
 

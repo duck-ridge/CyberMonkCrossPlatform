@@ -1,7 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://dcvivr50u7i8h"]
+[gd_scene load_steps=23 format=3 uid="uid://dcvivr50u7i8h"]
 
-[ext_resource type="Texture2D" uid="uid://wdxdftgjdwpb" path="res://Asset/Building/PlaceHolder.png" id="1_moowg"]
 [ext_resource type="Script" path="res://Building/building_empty.gd" id="1_s53sw"]
+[ext_resource type="Texture2D" uid="uid://bp8slvjhlqijp" path="res://Asset/Building/AwaitConstructSign.png" id="2_xglcp"]
 [ext_resource type="Texture2D" uid="uid://cxmqxwxsxdemk" path="res://Asset/Building/BuildingProcess.png" id="3_gr8lj"]
 [ext_resource type="StyleBox" uid="uid://trceivgdaa8f" path="res://Asset/Menu/MenuStyleBox.tres" id="4_b4bq0"]
 [ext_resource type="Texture2D" uid="uid://ckajt2bqdy864" path="res://Asset/Menu/BuildingSetMenu/main_normal.png" id="5_au1ov"]
@@ -17,21 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://drvue1tend03v" path="res://Asset/Menu/BuildingMenu/Luohantang_icon_normal.png.PNG" id="15_2cj14"]
 [ext_resource type="Texture2D" uid="uid://bol4kl2q7ngwa" path="res://Asset/Menu/BuildingMenu/Luohantang_icon_hover.png" id="16_xny0m"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u48ij"]
-atlas = ExtResource("1_moowg")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uv88p"]
-atlas = ExtResource("1_moowg")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wbnh0"]
-atlas = ExtResource("1_moowg")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dkgyv"]
-atlas = ExtResource("1_moowg")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xbf7"]
+atlas = ExtResource("2_xglcp")
+region = Rect2(0, 0, 83, 83)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h27sv"]
 atlas = ExtResource("3_gr8lj")
@@ -49,16 +37,7 @@ region = Rect2(214, 0, 107, 68)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u48ij")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uv88p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wbnh0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dkgyv")
+"texture": SubResource("AtlasTexture_3xbf7")
 }],
 "loop": true,
 "name": &"default",
@@ -105,9 +84,8 @@ script = ExtResource("1_s53sw")
 metadata/_edit_lock_ = true
 
 [node name="AniSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -22)
+position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_rdxyj")
-animation = &"working"
 
 [node name="ClickArea" type="Area2D" parent="."]
 position = Vector2(0, -38)

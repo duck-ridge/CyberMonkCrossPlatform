@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxtuenc8wp28y"]
+[gd_scene load_steps=13 format=3 uid="uid://bxtuenc8wp28y"]
 
 [ext_resource type="Texture2D" uid="uid://dk5rti7bkf08t" path="res://Asset/FuncUI/LuohanTang/rolling.png" id="1_alvfi"]
 [ext_resource type="Script" path="res://Func/luohan_tang_hud.gd" id="1_ftago"]
@@ -62,6 +62,14 @@ animations = [{
 "speed": 80.0
 }]
 
+[sub_resource type="Curve" id="Curve_mktw2"]
+max_value = 4.0
+_data = [Vector2(0, 0.936817), 0.0, 0.0, 0, 0, Vector2(0.231844, 3.98765), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_80nv2"]
+colors = PackedColorArray(0.693339, 0.185937, 0, 1, 1, 0.937255, 0, 1)
+
 [node name="LuohanTangHUD" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,15 +77,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ftago")
+metadata/_edit_lock_ = true
 
 [node name="RollingMachine" type="Node2D" parent="."]
 position = Vector2(566, 102)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="AniSprite" type="AnimatedSprite2D" parent="RollingMachine"]
 position = Vector2(-7, 17)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_fq8ak")
-animation = &"rolling"
+animation = &"empty"
+frame_progress = 0.139763
 
 [node name="PanelContainer" type="PanelContainer" parent="RollingMachine"]
 self_modulate = Color(1, 1, 1, 0)
@@ -130,6 +142,19 @@ offset_bottom = 134.0
 text = "Close"
 
 [node name="RollingTimer" type="Timer" parent="."]
+
+[node name="GetLuohanEffect" type="CPUParticles2D" parent="."]
+position = Vector2(529, 124)
+amount = 40
+lifetime = 2.0
+explosiveness = 0.8
+direction = Vector2(2.08165e-12, 2.08165e-12)
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_curve = SubResource("Curve_mktw2")
+color_ramp = SubResource("Gradient_80nv2")
 
 [connection signal="pressed" from="RollingMachine/StartBn" to="." method="_on_start_bn_pressed"]
 [connection signal="pressed" from="RollingMachine/CloseBtn" to="." method="_on_close_btn_pressed"]
