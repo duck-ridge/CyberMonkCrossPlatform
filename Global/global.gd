@@ -23,7 +23,7 @@ func _ready():
 	daxiongbaodian_build_gongde_price = DataLoader.main_csv.get("daxiongbaodian_build_gongde_price")
 	sengshe_build_gongde_price = DataLoader.main_csv.get("sengshe_build_gongde_price")
 	luohantang_build_gongde_price = DataLoader.main_csv.get("luohantang_build_gongde_price")
-	
+	MuyuLevel = DataLoader.main_csv.get("muyu_level")
 #------------price
 var daxiongbaodian_build_gongde_price: int = 10
 var sengshe_build_gongde_price: int = 20

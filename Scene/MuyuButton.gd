@@ -36,5 +36,5 @@ func tap_muyu():
 		Global.emit_signal("add_gongde", 10)
 	$MuyuSound.play()
 	var tween = create_tween()
-	tween.tween_property(self, "scale", Vector2.ONE * 1.05, 0.05).from(Vector2.ONE)
-	tween.tween_property(self, "scale", Vector2.ONE, 0.05).from(Vector2.ONE * 1.05)
+	tween.tween_property(self, "scale", Vector2.ONE * 0.8, 0.05).from(Vector2.ONE)
+	tween.tween_property(self, "scale", Vector2.ONE * 0.6, 0.05).from(Vector2.ONE * 1.05)
