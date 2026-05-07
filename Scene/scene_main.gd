@@ -120,9 +120,9 @@ func _on_muyu_button_pressed():
 	$CanvasLayer/MuyuButton.tap_muyu()
 
 func _on_lv_up_button_pressed():
-	if $CanvasLayer/MuyuButton.MuyuLevel <3:
-		$CanvasLayer/MuyuButton.MuyuLevel += 1
-	if $CanvasLayer/MuyuButton.MuyuLevel >= 3:
+	if Global.MuyuLevel <3:
+		Global.MuyuLevel += 1
+	if Global.MuyuLevel >= 3:
 		$CanvasLayer/MuyuButton/MuyuTimer.start()
 	$CanvasLayer/MuyuButton.change_muyu_level()
 
@@ -131,7 +131,7 @@ func _on_muyu_timer_timeout():
 	
 func _on_h_scroll_bar_scrolling():
 	
-	$Camera2D.offset.x = $CanvasLayer/HScrollBar.value * 3 + 940
+	$Camera2D.offset.x = $CanvasLayer/HScrollBar.value * 3
 
 func check_luohan_panel(panel_on_off):
 	match panel_on_off:

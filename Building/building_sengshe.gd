@@ -103,7 +103,7 @@ var mouse_position
 var distance_to_sengshe
 func _physics_process(delta):
 	distance_to_sengshe = get_local_mouse_position().length()
-	if distance_to_sengshe < 100:
+	if distance_to_sengshe < 120:
 		$PanelContainer.show()
 	else:
 		

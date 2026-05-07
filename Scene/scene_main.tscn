@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bx1hvmqudomsv"]
 
 [ext_resource type="Script" path="res://Scene/scene_main.gd" id="1_lcdjb"]
-[ext_resource type="Texture2D" uid="uid://2q8fml8112j7" path="res://Asset/BG/BG.PNG" id="2_5w2ao"]
+[ext_resource type="Texture2D" uid="uid://2q8fml8112j7" path="res://Asset/BG/BG.png" id="2_nko5s"]
 [ext_resource type="PackedScene" uid="uid://b2kw16ikfcqgv" path="res://Char/monk_little.tscn" id="3_2dhyy"]
 [ext_resource type="PackedScene" uid="uid://dcvivr50u7i8h" path="res://Building/building_empty.tscn" id="4_5uq1h"]
 [ext_resource type="PackedScene" uid="uid://cxpttr3cspni1" path="res://Building/building_sengshe.tscn" id="4_onao2"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bxtuenc8wp28y" path="res://Func/luohan_tang_hud.tscn" id="16_1cgrc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjga7"]
-size = Vector2(2048, 39.5)
+size = Vector2(1208, 25.75)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neks1"]
 texture = ExtResource("13_pve4c")
@@ -31,32 +31,30 @@ texture_margin_bottom = 8.0
 script = ExtResource("1_lcdjb")
 
 [node name="BG" type="Sprite2D" parent="."]
-position = Vector2(0, 258)
-texture = ExtResource("2_5w2ao")
-offset = Vector2(1024, -256)
-
-[node name="Floor" type="StaticBody2D" parent="BG"]
-position = Vector2(1024, -24)
-collision_layer = 5
+texture = ExtResource("2_nko5s")
+offset = Vector2(1084, 190)
 metadata/_edit_group_ = true
 
+[node name="Floor" type="StaticBody2D" parent="BG"]
+collision_layer = 5
+
 [node name="FloorCollision" type="CollisionShape2D" parent="BG/Floor"]
-position = Vector2(0, 18.25)
+position = Vector2(288, 300)
 shape = SubResource("RectangleShape2D_wjga7")
 
 [node name="BuildingSystem" type="Node2D" parent="."]
 
 [node name="BuildingDaXiongBaoDian" parent="BuildingSystem" instance=ExtResource("5_7xc3w")]
-position = Vector2(965, 158)
+position = Vector2(911, 184)
 
 [node name="BuildingDaXiongBaoDian2" parent="BuildingSystem" instance=ExtResource("5_7xc3w")]
-position = Vector2(382, 158)
+position = Vector2(381, 184)
 
 [node name="BuildingSengShe" parent="BuildingSystem" instance=ExtResource("4_onao2")]
-position = Vector2(564, 234)
+position = Vector2(566, 288)
 
 [node name="BuildingLuohantang" parent="BuildingSystem" instance=ExtResource("11_lyodh")]
-position = Vector2(112, 160)
+position = Vector2(111, 187)
 
 [node name="MonkSystem" type="Node2D" parent="."]
 
@@ -70,17 +68,17 @@ position = Vector2(188, 125)
 position = Vector2(591, 116)
 
 [node name="MonkLittle4" parent="MonkSystem" instance=ExtResource("3_2dhyy")]
-position = Vector2(404, 126)
+position = Vector2(402, 225)
 
 [node name="MonkZhike" parent="MonkSystem" instance=ExtResource("7_xj2tc")]
 
 [node name="EmptyBuildingSystem" type="Node2D" parent="."]
 
 [node name="BuildingEmpty" parent="EmptyBuildingSystem" instance=ExtResource("4_5uq1h")]
-position = Vector2(1355, 233)
+position = Vector2(1214, 287)
 
 [node name="BuildingEmpty2" parent="EmptyBuildingSystem" instance=ExtResource("4_5uq1h")]
-position = Vector2(166, 234)
+position = Vector2(163, 287)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -127,12 +125,14 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -17.0
+offset_left = 2.0
+offset_top = -24.0
+offset_right = 2.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 page = 5.0
 custom_step = 5.0
-metadata/_edit_lock_ = true
 
 [node name="MuyuButton" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 3
@@ -174,7 +174,7 @@ stream = ExtResource("6_y87uw")
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
-offset = Vector2(940, 128)
+position = Vector2(1129, 160)
 
 [connection signal="scrolling" from="CanvasLayer/HScrollBar" to="." method="_on_h_scroll_bar_scrolling"]
 [connection signal="pressed" from="CanvasLayer/MuyuButton" to="." method="_on_muyu_button_pressed"]

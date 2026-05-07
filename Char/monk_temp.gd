@@ -48,8 +48,8 @@ func _on_click_area_input_event(viewport, event, shape_idx):
 func _physics_process(delta):
 	if is_grabbed:
 		global_position = get_global_mouse_position()
-		if global_position.y > 200:
-			global_position.y = 200
+		if global_position.y > 270:
+			global_position.y = 270
 		return
 
 	if not is_on_floor():
