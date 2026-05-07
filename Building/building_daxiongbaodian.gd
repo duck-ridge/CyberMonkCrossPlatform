@@ -60,3 +60,7 @@ func hide_menu():
 	if not menu_tween.is_valid(): 
 		$MenuPanel.hide()
 	$MenuPanel.hide()
+
+
+func _on_downgrade_btn_pressed():
+	queue_free()

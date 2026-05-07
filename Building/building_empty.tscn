@@ -77,7 +77,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0e5q"]
-size = Vector2(20, 26)
+size = Vector2(41, 35)
 
 [node name="BuildingEmpty" type="Node2D"]
 script = ExtResource("1_s53sw")
@@ -91,7 +91,7 @@ sprite_frames = SubResource("SpriteFrames_rdxyj")
 position = Vector2(0, -38)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
-position = Vector2(0, 16)
+position = Vector2(-0.5, 20.5)
 shape = SubResource("RectangleShape2D_l0e5q")
 
 [node name="BuildingMenu" type="Node2D" parent="."]
@@ -252,3 +252,6 @@ texture_hover = ExtResource("16_xny0m")
 [connection signal="pressed" from="HusMenuSystem/HusMenuPanel/HBoxContainer/MainSet" to="." method="_on_main_set_pressed"]
 [connection signal="pressed" from="HusMenuSystem/HusMenuPanel/HBoxContainer/SideSet" to="." method="_on_side_set_pressed"]
 [connection signal="pressed" from="HusMenuSystem/HusMenuPanel/HBoxContainer/Other" to="." method="_on_other_pressed"]
+[connection signal="pressed" from="HusMenuSystem/MainHusMenuPanel/HBoxContainer/Daxiongbaodian" to="." method="_on_daxiongbaodian_pressed"]
+[connection signal="pressed" from="HusMenuSystem/SideHusMenuPanel/HBoxContainer/Sengshe" to="." method="_on_sengshe_pressed"]
+[connection signal="pressed" from="HusMenuSystem/OtherHusMenuPanel/HBoxContainer/Luohan" to="." method="_on_luohan_pressed"]

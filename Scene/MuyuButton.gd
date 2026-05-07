@@ -1,6 +1,6 @@
 extends TextureButton
 
-var MuyuLevel: int = 1
+#var MuyuLevel: int = 1
 
 @onready var wooden_muyu_normal = preload("res://Asset/Muyu/Wooden_normal.png")
 @onready var silver_muyu_normal = preload("res://Asset/Muyu/Silver_normal.png")
@@ -18,23 +18,21 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func change_muyu_level():
-	if MuyuLevel == 1:
+	if Global.MuyuLevel == 1:
 		texture_normal = wooden_muyu_normal
 		texture_hover = wooden_muyu_hover
-	elif MuyuLevel == 2:
+	elif Global.MuyuLevel == 2:
 		texture_normal = silver_muyu_normal
 		texture_hover = silver_muyu_hover
-	elif MuyuLevel == 3:
+	elif Global.MuyuLevel == 3:
 		texture_normal = golden_muyu_normal
 		texture_hover = golden_muyu_hover
 func tap_muyu():
-	if MuyuLevel == 1:
+	if Global.MuyuLevel == 1:
 		Global.emit_signal("add_gongde", 1)
-	elif MuyuLevel >= 2:
+	elif Global.MuyuLevel >= 2:
 		Global.emit_signal("add_gongde", 10)
 	$MuyuSound.play()
 	var tween = create_tween()

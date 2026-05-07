@@ -1,70 +1,70 @@
-[gd_scene load_steps=25 format=3 uid="uid://b2kw16ikfcqgv"]
+[gd_scene load_steps=25 format=3 uid="uid://i6t86778nnnt"]
 
-[ext_resource type="Script" path="res://Char/monk_little.gd" id="1_a54ys"]
-[ext_resource type="Texture2D" uid="uid://b43y4527hmybw" path="res://Asset/Monks/MonkLilttle/MkLittleMeditation.png" id="2_j56hl"]
-[ext_resource type="Texture2D" uid="uid://ci3q07u6hl0b7" path="res://Asset/Monks/MonkLilttle/MkLittleWalk.png" id="3_ffbum"]
-[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="4_uvyhn"]
-[ext_resource type="Script" path="res://StateMachine/MonkWalk.gd" id="5_or3u6"]
-[ext_resource type="Script" path="res://StateMachine/MonkMeditation.gd" id="6_di7vm"]
+[ext_resource type="Script" path="res://Char/monk_temp.gd" id="1_phx8u"]
+[ext_resource type="Texture2D" uid="uid://b43y4527hmybw" path="res://Asset/Monks/MonkLilttle/MkLittleMeditation.png" id="2_k6v8u"]
+[ext_resource type="Texture2D" uid="uid://ci3q07u6hl0b7" path="res://Asset/Monks/MonkLilttle/MkLittleWalk.png" id="3_nbs50"]
+[ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="4_ndttb"]
+[ext_resource type="Script" path="res://StateMachine/MonkWalk.gd" id="5_jx837"]
+[ext_resource type="Script" path="res://StateMachine/MonkMeditation.gd" id="6_618jc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kwt0s"]
-atlas = ExtResource("2_j56hl")
+atlas = ExtResource("2_k6v8u")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnlk0"]
-atlas = ExtResource("2_j56hl")
+atlas = ExtResource("2_k6v8u")
 region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m14cv"]
-atlas = ExtResource("2_j56hl")
+atlas = ExtResource("2_k6v8u")
 region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xhkax"]
-atlas = ExtResource("2_j56hl")
+atlas = ExtResource("2_k6v8u")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6vj6"]
-atlas = ExtResource("2_j56hl")
+atlas = ExtResource("2_k6v8u")
 region = Rect2(160, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ueboi"]
-atlas = ExtResource("2_j56hl")
+atlas = ExtResource("2_k6v8u")
 region = Rect2(200, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yykku"]
-atlas = ExtResource("2_j56hl")
+atlas = ExtResource("2_k6v8u")
 region = Rect2(240, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_blkkp"]
-atlas = ExtResource("3_ffbum")
+atlas = ExtResource("3_nbs50")
 region = Rect2(0, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07dmi"]
-atlas = ExtResource("3_ffbum")
+atlas = ExtResource("3_nbs50")
 region = Rect2(40, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m1wh0"]
-atlas = ExtResource("3_ffbum")
+atlas = ExtResource("3_nbs50")
 region = Rect2(80, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fu0lp"]
-atlas = ExtResource("3_ffbum")
+atlas = ExtResource("3_nbs50")
 region = Rect2(120, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfdas"]
-atlas = ExtResource("3_ffbum")
+atlas = ExtResource("3_nbs50")
 region = Rect2(160, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b8ist"]
-atlas = ExtResource("3_ffbum")
+atlas = ExtResource("3_nbs50")
 region = Rect2(200, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46a72"]
-atlas = ExtResource("3_ffbum")
+atlas = ExtResource("3_nbs50")
 region = Rect2(240, 0, 40, 40)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vsti2"]
-atlas = ExtResource("3_ffbum")
+atlas = ExtResource("3_nbs50")
 region = Rect2(280, 0, 40, 40)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cea8d"]
@@ -132,9 +132,9 @@ height = 74.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojxpo"]
 radius = 17.0
 
-[node name="MonkLittle" type="CharacterBody2D"]
+[node name="MonkTemp" type="CharacterBody2D"]
 collision_mask = 4
-script = ExtResource("1_a54ys")
+script = ExtResource("1_phx8u")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
@@ -152,15 +152,15 @@ position = Vector2(2, 17)
 shape = SubResource("CircleShape2D_ojxpo")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_uvyhn")
+script = ExtResource("4_ndttb")
 initial_state = NodePath("MonkMeditation")
 
 [node name="MonkWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("monk")]
-script = ExtResource("5_or3u6")
+script = ExtResource("5_jx837")
 monk = NodePath("../..")
 
 [node name="MonkMeditation" type="Node" parent="StateMachine" node_paths=PackedStringArray("monk")]
-script = ExtResource("6_di7vm")
+script = ExtResource("6_618jc")
 monk = NodePath("../..")
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]

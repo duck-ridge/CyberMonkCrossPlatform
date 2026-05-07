@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://Global/global.gd"
 DataLoader="*res://DATA/DATA_loader.gd"
+Global="*res://Global/global.gd"
 
 [display]
 

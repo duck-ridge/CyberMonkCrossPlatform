@@ -1,8 +1,10 @@
 extends Node2D
 
 var registered_monk
-var gongde_sum: int = 0
+
 var scroll_x
+@onready var gongde_label = $CanvasLayer/HUD/HBox/GongdeLabel
+@onready var xianghuo_label = $CanvasLayer/HUD/HBox/XianghuoLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,8 +12,8 @@ func _ready():
 	Global.connect("monk_drop_pos", drop_monk)
 	Global.connect("add_gongde", update_gongde)
 	Global.connect("luohantang_panel", check_luohan_panel)
-	gongde_sum = DataLoader.main_csv.get("gongde_sum")
-	print(gongde_sum)
+	Global.connect("update_resource", update_resource_label)
+	#Global.gongde_sum = DataLoader.main_csv.get("gongde_sum")
 	update_gongde(0)
 	
 	DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_ALWAYS_ON_TOP, false)
@@ -47,15 +49,9 @@ func _fit_to_bottom_width():
 	_set_click_through(new_size)
 	
 func _set_click_through(size: Vector2i):
-	# 方案 A：让整个底部窗口都能接收点击（会挡住桌面图标）
-	# var area = PackedVector2Array([Vector2(0,0), Vector2(size.x,0), Vector2(size.x,size.y), Vector2(0,size.y)])
-	
-	# 方案 B (推荐)：全穿透。这样你点透明的地方会点到桌面。
-	# 然后你需要在宠物节点（Sprite）上单独处理点击逻辑。
 	var empty_area = PackedVector2Array() 
 	DisplayServer.window_set_mouse_passthrough(empty_area)
-	#print(DataLoader.main_csv)
-	#print(DataLoader.keys())
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _align_window_to_bottom():
 	# 获取当前屏幕索引
@@ -69,8 +65,12 @@ func _align_window_to_bottom():
 	
 	
 func update_gongde(gongde):
-	gongde_sum += gongde
-	$CanvasLayer/HUD/HBox/GongdeLabel.text = str(gongde_sum)
+	Global.gongde_sum += gongde
+	gongde_label.text = str(Global.gongde_sum)
+	
+func update_resource_label():
+	gongde_label.text = str(Global.gongde_sum)
+	xianghuo_label.text = str(Global.xianghuo_sum)
 	
 func check_through_buildings(pos):
 	var b_pool: Array
@@ -101,12 +101,11 @@ func _unhandled_input(event):
 			else:
 				for m in $MonkSystem.get_children():
 					m.release_grab()
-
 	
 func _input(event):
 	scroll_x = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_pressed("ui_accept"):
-		DataLoader.save_dict_to_csv("res://DATA/MainDATA.csv", {"gongde_sum": gongde_sum})
+		DataLoader.save_dict_to_csv("res://DATA/MainDATA.csv", {"gongde_sum": Global.gongde_sum})
 	
 func _physics_process(delta):
 	if scroll_x != 0 and scroll_x != null:

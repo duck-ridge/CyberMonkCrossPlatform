@@ -5,10 +5,12 @@ class_name BuildingPlaceHolder
 var allow_interact: bool = true
 #enum hus_set_type {MAIN, SIDE, OTHER}
 enum hus_set_type {BASIC, MAIN, SIDE, OTHER}
+var building_system_node
 
 func _ready():
 	hide_menu()
 	$AniSprite.play("default")
+	building_system_node = get_node('../../BuildingSystem')
 	for menu in $HusMenuSystem.get_children():
 		menu.hide()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -108,3 +110,48 @@ func _on_other_pressed():
 	$HusMenuSystem/HusMenuPanel.hide()
 	$HusMenuSystem/OtherHusMenuPanel.show()
 	unfold_a_tween(hus_set_type.OTHER)
+
+
+func _on_daxiongbaodian_pressed():
+	if Global.gongde_sum < Global.daxiongbaodian_build_gongde_price:
+		return
+	Global.gongde_sum -= Global.daxiongbaodian_build_gongde_price
+	$AniSprite.play("working")
+	await $AniSprite.animation_finished
+	var Building = load("res://Building/building_daxiongbaodian.tscn")
+	var Building_inst = Building.instantiate()
+	building_system_node.add_child(Building_inst)
+	Building_inst.position = position
+	Building_inst.name = "BuildingDaxiongbaodian"
+	
+	queue_free()
+	
+
+
+func _on_sengshe_pressed():
+	if Global.gongde_sum < Global.sengshe_build_gongde_price:
+		return
+	Global.gongde_sum -= Global.sengshe_build_gongde_price
+	$AniSprite.play("working")
+	await $AniSprite.animation_finished
+	var Building = load("res://Building/building_sengshe.tscn")
+	var Building_inst = Building.instantiate()
+	building_system_node.add_child(Building_inst)
+	Building_inst.position = position
+	Building_inst.name = "BuildingSengshe"
+	
+	queue_free()
+
+func _on_luohan_pressed():
+	if Global.gongde_sum < Global.luohantang_build_gongde_price:
+		return
+	Global.gongde_sum -= Global.luohantang_build_gongde_price
+	$AniSprite.play("working")
+	await $AniSprite.animation_finished
+	var Building = load("res://Building/building_luohantang.tscn")
+	var Building_inst = Building.instantiate()
+	building_system_node.add_child(Building_inst)
+	Building_inst.position = position
+	Building_inst.name = "BuildingLuohan"
+	
+	queue_free()

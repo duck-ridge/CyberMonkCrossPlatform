@@ -1,5 +1,5 @@
 extends MonkTemp
-class_name MonkYunyou
+class_name MonkZhike
 #
 #enum MonkType {
 	#LITTLE,
@@ -8,14 +8,13 @@ class_name MonkYunyou
 	#JING
 #}
 #
-#var monk_code = MonkType.YUNYOU
+#var monk_code = MonkType.ZHIKE
 #
 #var is_grabbed: bool = false
 #var gravity = 980
 #
 ## Called when the node enters the scene tree for the first time.
 #func _ready():
-	#print(MonkType)
 	#$StateMachine.ready_start()
 #
 ## Called every frame. 'delta' is the elapsed time since the previous frame.
