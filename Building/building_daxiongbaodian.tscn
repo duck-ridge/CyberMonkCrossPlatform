@@ -81,5 +81,6 @@ position = Vector2(0, -60)
 position = Vector2(-1, 13)
 shape = SubResource("RectangleShape2D_dqbgj")
 
+[connection signal="pressed" from="MenuPanel/HBoxContainer/RunBtn" to="." method="_on_run_btn_pressed"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/DowngradeBtn" to="." method="_on_downgrade_btn_pressed"]
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]

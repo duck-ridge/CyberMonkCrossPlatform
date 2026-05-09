@@ -6,7 +6,7 @@ signal monk_drop_pos(drop_position: Vector2)
 signal add_gongde(gongde: int)
 signal luohantang_panel(is_on: bool)
 signal update_resource
-
+signal send_a_monk(pos: Vector2)
 var xianghuo_sum: int = 0:
 	set(value):
 		xianghuo_sum = value

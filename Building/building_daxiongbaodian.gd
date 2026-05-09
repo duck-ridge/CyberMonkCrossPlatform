@@ -64,3 +64,7 @@ func hide_menu():
 
 func _on_downgrade_btn_pressed():
 	queue_free()
+
+
+func _on_run_btn_pressed():
+	Global.emit_signal("send_a_monk", global_position)

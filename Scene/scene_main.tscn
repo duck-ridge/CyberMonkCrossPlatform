@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bxtuenc8wp28y" path="res://Func/luohan_tang_hud.tscn" id="16_1cgrc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wjga7"]
-size = Vector2(1208, 25.75)
+size = Vector2(2869, 25.75)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_neks1"]
 texture = ExtResource("13_pve4c")
@@ -39,16 +39,13 @@ metadata/_edit_group_ = true
 collision_layer = 5
 
 [node name="FloorCollision" type="CollisionShape2D" parent="BG/Floor"]
-position = Vector2(288, 300)
+position = Vector2(1118.5, 300)
 shape = SubResource("RectangleShape2D_wjga7")
 
 [node name="BuildingSystem" type="Node2D" parent="."]
 
 [node name="BuildingDaXiongBaoDian" parent="BuildingSystem" instance=ExtResource("5_7xc3w")]
 position = Vector2(911, 184)
-
-[node name="BuildingDaXiongBaoDian2" parent="BuildingSystem" instance=ExtResource("5_7xc3w")]
-position = Vector2(381, 184)
 
 [node name="BuildingSengShe" parent="BuildingSystem" instance=ExtResource("4_onao2")]
 position = Vector2(566, 288)
@@ -133,6 +130,7 @@ grow_horizontal = 2
 grow_vertical = 0
 page = 5.0
 custom_step = 5.0
+metadata/_edit_lock_ = true
 
 [node name="MuyuButton" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = 3

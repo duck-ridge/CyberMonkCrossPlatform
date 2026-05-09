@@ -5,7 +5,7 @@ var registered_monk
 var scroll_x
 @onready var gongde_label = $CanvasLayer/HUD/HBox/GongdeLabel
 @onready var xianghuo_label = $CanvasLayer/HUD/HBox/XianghuoLabel
-
+@onready var monk_little = preload("res://Char/monk_little.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.connect("monk_grabbed", register_monk)
@@ -13,6 +13,7 @@ func _ready():
 	Global.connect("add_gongde", update_gongde)
 	Global.connect("luohantang_panel", check_luohan_panel)
 	Global.connect("update_resource", update_resource_label)
+	Global.connect("send_a_monk", generate_a_monk)
 	#Global.gongde_sum = DataLoader.main_csv.get("gongde_sum")
 	update_gongde(0)
 	
@@ -140,3 +141,12 @@ func check_luohan_panel(panel_on_off):
 		false:
 			$CanvasLayer/LuohanTangHUD.hide()
 		
+func generate_a_monk(pos: Vector2):
+	var monk_little_inst = monk_little.instantiate()
+	get_node("MonkSystem").add_child(monk_little_inst)
+	monk_little_inst.name = "MonkLittle"
+	monk_little_inst.position = pos - Vector2(0, 40)
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property(monk_little_inst, "scale", Vector2.ONE, 0.2).from(Vector2.ZERO)
+	

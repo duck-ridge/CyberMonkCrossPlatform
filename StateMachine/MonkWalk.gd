@@ -33,7 +33,7 @@ func physics_update(delta: float):
 		wander_time -= delta
 		
 		# 2. 边界检查逻辑 (修复了你之前代码中 left/right 判断冲突的 Bug)
-		check_boundary(200, 800)
+		check_boundary(200, 1400)
 		
 		# 3. 位移逻辑 (维持你要求的 position 直接加减)
 		if move_to_right:
