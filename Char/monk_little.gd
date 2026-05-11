@@ -1,7 +1,9 @@
 extends MonkTemp
 class_name MonkLittle
 
-
+func _ready():
+	monk_code = MonkType.LITTLE
+	$StateMachine.ready_start()
 #var is_grabbed: bool = false
 #
 #var gravity = 980

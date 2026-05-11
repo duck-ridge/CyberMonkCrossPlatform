@@ -8,8 +8,11 @@ class_name MonkZhike
 	#JING
 #}
 #
-#var monk_code = MonkType.ZHIKE
 #
+
+func _ready():
+	monk_code = MonkType.ZHIKE
+	$StateMachine.ready_start()
 #var is_grabbed: bool = false
 #var gravity = 980
 #

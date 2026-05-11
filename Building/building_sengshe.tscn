@@ -59,12 +59,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -87.0
-offset_top = -180.0
+offset_top = -196.0
 offset_right = 90.0
-offset_bottom = -40.0
+offset_bottom = -56.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(100, 31)
+pivot_offset = Vector2(87, 46)
 theme_override_styles/panel = SubResource("StyleBoxTexture_jgn1q")
 metadata/_edit_group_ = true
 
@@ -95,9 +95,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 34.0
+offset_left = 38.0
 offset_top = -40.0
-offset_right = 68.0
+offset_right = 72.0
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_group_ = true
@@ -117,4 +117,23 @@ layout_mode = 2
 
 [node name="MonkResidence" type="Node2D" parent="."]
 
+[node name="GongdeProgress" type="ProgressBar" parent="."]
+offset_left = -34.0
+offset_top = -93.0
+offset_right = 35.0
+offset_bottom = -66.0
+step = 1.0
+page = 40.0
+value = 50.0
+
+[node name="LongPressTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="ProduceGongde" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="timeout" from="LongPressTimer" to="." method="_on_long_press_timer_timeout"]
+[connection signal="timeout" from="ProduceGongde" to="." method="_on_produce_gongde_timeout"]

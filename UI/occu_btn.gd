@@ -5,7 +5,6 @@ extends TextureButton
 @onready var have_monk_yunyou = preload("res://Asset/Profile/MonkYunyou.png")
 @onready var have_monk_jing = preload("res://Asset/Profile/MonkJing.png")
 
-
 @onready var no_occupied = preload("res://Asset/Profile/Frame.png")
 
 var parent_building
@@ -39,15 +38,18 @@ func check_texture(monk_code: int):
 	if is_occupied != true:
 		texture_normal = no_occupied
 	else:
-		print(monk_code)
 		match monk_code:
 			
 			0:
 				texture_normal = have_monk_little
+				#print("little")
 			1:
 				texture_normal = have_monk_zhike
+				#print("zhike")
 			2:
 				texture_normal = have_monk_yunyou
+				#print("yunyou")
 			3:
 				texture_normal = have_monk_jing
+				#print("jing")
 				

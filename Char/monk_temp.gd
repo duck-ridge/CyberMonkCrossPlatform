@@ -13,11 +13,11 @@ enum MonkType {
 	JING
 }
 
-var monk_code = MonkType.LITTLE
+@export var monk_code = MonkType.LITTLE
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	$StateMachine.ready_start()
+#func _ready():
+	#$StateMachine.ready_start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
