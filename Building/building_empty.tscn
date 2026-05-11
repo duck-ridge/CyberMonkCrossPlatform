@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcvivr50u7i8h"]
+[gd_scene load_steps=26 format=3 uid="uid://dcvivr50u7i8h"]
 
 [ext_resource type="Script" path="res://Building/building_empty.gd" id="1_s53sw"]
 [ext_resource type="Texture2D" uid="uid://bp8slvjhlqijp" path="res://Asset/Building/AwaitConstructSign.png" id="2_xglcp"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://c5h6yv03h2ptm" path="res://Asset/Menu/BuildingMenu/Sengshe_icon_hover.png" id="14_4k60c"]
 [ext_resource type="Texture2D" uid="uid://drvue1tend03v" path="res://Asset/Menu/BuildingMenu/Luohantang_icon_normal.png.PNG" id="15_2cj14"]
 [ext_resource type="Texture2D" uid="uid://bol4kl2q7ngwa" path="res://Asset/Menu/BuildingMenu/Luohantang_icon_hover.png" id="16_xny0m"]
+[ext_resource type="AudioStream" uid="uid://c6cngm6g8ihas" path="res://Asset/Sound/CostResourceSound.mp3" id="17_y4t7k"]
+[ext_resource type="AudioStream" uid="uid://cg3qyjgja7pu5" path="res://Asset/Sound/ClickSound.mp3" id="18_adtlm"]
+[ext_resource type="AudioStream" uid="uid://dj5f73m76ndco" path="res://Asset/Sound/BuildingWorking.mp3" id="19_uukgu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3xbf7"]
 atlas = ExtResource("2_xglcp")
@@ -73,7 +76,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"working",
-"speed": 8.0
+"speed": 12.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l0e5q"]
@@ -248,6 +251,17 @@ texture_hover = ExtResource("16_xny0m")
 layout_mode = 2
 texture_normal = ExtResource("15_2cj14")
 texture_hover = ExtResource("16_xny0m")
+
+[node name="BuildingSound" type="AudioStreamPlayer" parent="."]
+
+[node name="CostResourceSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_y4t7k")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_adtlm")
+
+[node name="BuildingWorkingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_uukgu")
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="pressed" from="HusMenuSystem/HusMenuPanel/HBoxContainer/MainSet" to="." method="_on_main_set_pressed"]

@@ -3,6 +3,7 @@ extends Node2D
 @export var allow_occupied: bool = true
 var is_occupied: bool = false
 var occupied_monk: CharacterBody2D
+@onready var click_sound = $ClickSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

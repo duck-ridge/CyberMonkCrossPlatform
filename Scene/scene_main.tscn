@@ -57,15 +57,19 @@ position = Vector2(111, 187)
 
 [node name="MonkLittle" parent="MonkSystem" instance=ExtResource("3_2dhyy")]
 position = Vector2(750, 116)
+monk_code = null
 
 [node name="MonkLittle2" parent="MonkSystem" instance=ExtResource("3_2dhyy")]
 position = Vector2(188, 125)
+monk_code = null
 
 [node name="MonkLittle3" parent="MonkSystem" instance=ExtResource("3_2dhyy")]
 position = Vector2(591, 116)
+monk_code = null
 
 [node name="MonkLittle4" parent="MonkSystem" instance=ExtResource("3_2dhyy")]
 position = Vector2(402, 225)
+monk_code = null
 
 [node name="MonkZhike" parent="MonkSystem" instance=ExtResource("7_xj2tc")]
 

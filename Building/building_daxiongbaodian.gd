@@ -3,6 +3,7 @@ extends Node2D
 @export var allow_occupied: bool = true
 var is_occupied: bool = false
 var occupied_monk: CharacterBody2D
+@onready var click_sound = $ClickSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -63,8 +64,13 @@ func hide_menu():
 
 
 func _on_downgrade_btn_pressed():
+	
 	queue_free()
 
 
 func _on_run_btn_pressed():
+	if Global.gongde_sum - Global.monk_produce_price < 0:
+		return
+	Global.gongde_sum -= Global.monk_produce_price
+	Global.monk_produce_price += Global.monk_produce_change_price
 	Global.emit_signal("send_a_monk", global_position)

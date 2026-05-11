@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxtuenc8wp28y"]
+[gd_scene load_steps=27 format=3 uid="uid://bxtuenc8wp28y"]
 
 [ext_resource type="Texture2D" uid="uid://dk5rti7bkf08t" path="res://Asset/FuncUI/LuohanTang/rolling.png" id="1_alvfi"]
 [ext_resource type="Script" path="res://Func/luohan_tang_hud.gd" id="1_ftago"]
 [ext_resource type="Texture2D" uid="uid://b181qwdope0dn" path="res://Asset/FuncUI/LuohanTang/empty.png" id="2_oskis"]
+[ext_resource type="Texture2D" uid="uid://pq80fq6mrunp" path="res://Asset/FuncUI/LuohanTang/Luohan.PNG" id="4_1hme4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bkgq2"]
 atlas = ExtResource("1_alvfi")
@@ -62,6 +63,153 @@ animations = [{
 "speed": 80.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3ds3"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe4h0"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a507t"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ciuw"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h6wy"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_novtq"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsc4m"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7up0b"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1w2h"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hncxm"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ylg7e"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bd228"]
+atlas = ExtResource("4_1hme4")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykflh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3ds3")
+}],
+"loop": true,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xe4h0")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a507t")
+}],
+"loop": true,
+"name": &"10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ciuw")
+}],
+"loop": true,
+"name": &"11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h6wy")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_novtq")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsc4m")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7up0b")
+}],
+"loop": true,
+"name": &"5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1w2h")
+}],
+"loop": true,
+"name": &"6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hncxm")
+}],
+"loop": true,
+"name": &"7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ylg7e")
+}],
+"loop": true,
+"name": &"8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bd228")
+}],
+"loop": true,
+"name": &"9",
+"speed": 5.0
+}]
+
 [sub_resource type="Curve" id="Curve_mktw2"]
 max_value = 4.0
 _data = [Vector2(0, 0.936817), 0.0, 0.0, 0, 0, Vector2(0.231844, 3.98765), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -80,16 +228,20 @@ script = ExtResource("1_ftago")
 metadata/_edit_lock_ = true
 
 [node name="RollingMachine" type="Node2D" parent="."]
-position = Vector2(566, 102)
-metadata/_edit_lock_ = true
-metadata/_edit_group_ = true
+position = Vector2(718, 103)
 
 [node name="AniSprite" type="AnimatedSprite2D" parent="RollingMachine"]
 position = Vector2(-7, 17)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_fq8ak")
-animation = &"empty"
-frame_progress = 0.139763
+animation = &"rolling"
+
+[node name="LuohanOutcome" type="AnimatedSprite2D" parent="RollingMachine/AniSprite"]
+visible = false
+position = Vector2(-16, 2)
+scale = Vector2(1.90625, 1.90625)
+sprite_frames = SubResource("SpriteFrames_ykflh")
+animation = &"0"
 
 [node name="PanelContainer" type="PanelContainer" parent="RollingMachine"]
 self_modulate = Color(1, 1, 1, 0)
@@ -144,7 +296,7 @@ text = "Close"
 [node name="RollingTimer" type="Timer" parent="."]
 
 [node name="GetLuohanEffect" type="CPUParticles2D" parent="."]
-position = Vector2(529, 124)
+position = Vector2(679, 130)
 amount = 40
 lifetime = 2.0
 explosiveness = 0.8

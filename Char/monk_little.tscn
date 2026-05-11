@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b2kw16ikfcqgv"]
+[gd_scene load_steps=26 format=3 uid="uid://b2kw16ikfcqgv"]
 
 [ext_resource type="Script" path="res://Char/monk_little.gd" id="1_a54ys"]
 [ext_resource type="Texture2D" uid="uid://b43y4527hmybw" path="res://Asset/Monks/MonkLilttle/MkLittleMeditation.png" id="2_j56hl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://StateMachine/StateMachine.gd" id="4_uvyhn"]
 [ext_resource type="Script" path="res://StateMachine/MonkWalk.gd" id="5_or3u6"]
 [ext_resource type="Script" path="res://StateMachine/MonkMeditation.gd" id="6_di7vm"]
+[ext_resource type="AudioStream" uid="uid://b7kd3anopl601" path="res://Asset/Sound/GrabMonk.mp3" id="7_oyexv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kwt0s"]
 atlas = ExtResource("2_j56hl")
@@ -164,5 +165,8 @@ monk = NodePath("../..")
 [node name="MonkMeditation" type="Node" parent="StateMachine" node_paths=PackedStringArray("monk")]
 script = ExtResource("6_di7vm")
 monk = NodePath("../..")
+
+[node name="AudioGrabed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_oyexv")
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]

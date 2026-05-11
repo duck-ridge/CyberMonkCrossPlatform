@@ -6,6 +6,9 @@ var allow_interact: bool = true
 #enum hus_set_type {MAIN, SIDE, OTHER}
 enum hus_set_type {BASIC, MAIN, SIDE, OTHER}
 var building_system_node
+@onready var cost_resource_sound = $CostResourceSound
+@onready var click_sound = $ClickSound
+@onready var building_working_sound = $BuildingWorkingSound
 
 func _ready():
 	hide_menu()
@@ -87,6 +90,7 @@ func _on_main_set_pressed():
 
 func _on_side_set_pressed():
 	all_set_choice_able(true)
+	click_sound.play()
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_SINE)
@@ -100,10 +104,12 @@ func _on_side_set_pressed():
 
 func _on_other_pressed():
 	all_set_choice_able(true)
+	click_sound.play()
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.tween_property($HusMenuSystem/HusMenuPanel, "scale", Vector2(0, 1), 0.2).from(Vector2(1, 1))
+	
 	await get_tree().create_timer(0.2).timeout
 	
 	all_set_choice_able(false)
@@ -116,7 +122,11 @@ func _on_daxiongbaodian_pressed():
 	if Global.gongde_sum < Global.daxiongbaodian_build_gongde_price:
 		return
 	Global.gongde_sum -= Global.daxiongbaodian_build_gongde_price
+	cost_resource_sound.play()
+	click_sound.play()
+	building_working_sound.play()
 	$AniSprite.play("working")
+
 	await $AniSprite.animation_finished
 	var Building = load("res://Building/building_daxiongbaodian.tscn")
 	var Building_inst = Building.instantiate()
@@ -132,7 +142,11 @@ func _on_sengshe_pressed():
 	if Global.gongde_sum < Global.sengshe_build_gongde_price:
 		return
 	Global.gongde_sum -= Global.sengshe_build_gongde_price
+	cost_resource_sound.play()
+	click_sound.play()
+	building_working_sound.play()
 	$AniSprite.play("working")
+	
 	await $AniSprite.animation_finished
 	var Building = load("res://Building/building_sengshe.tscn")
 	var Building_inst = Building.instantiate()
@@ -146,7 +160,11 @@ func _on_luohan_pressed():
 	if Global.gongde_sum < Global.luohantang_build_gongde_price:
 		return
 	Global.gongde_sum -= Global.luohantang_build_gongde_price
+	cost_resource_sound.play()
+	click_sound.play()
+	building_working_sound.play()
 	$AniSprite.play("working")
+	
 	await $AniSprite.animation_finished
 	var Building = load("res://Building/building_luohantang.tscn")
 	var Building_inst = Building.instantiate()

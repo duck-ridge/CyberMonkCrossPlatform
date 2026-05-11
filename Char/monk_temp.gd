@@ -6,6 +6,7 @@ var is_grabbed: bool = false
 
 var gravity = 980
 
+
 enum MonkType {
 	LITTLE,
 	ZHIKE,
@@ -14,7 +15,7 @@ enum MonkType {
 }
 
 @export var monk_code = MonkType.LITTLE
-
+@onready var grab_sound = $AudioGrabed
 # Called when the node enters the scene tree for the first time.
 #func _ready():
 	#$StateMachine.ready_start()
@@ -34,6 +35,7 @@ func _on_click_area_input_event(viewport, event, shape_idx):
 		#get_viewport().set_input_as_handled()
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				grab_sound.play()
 				get_viewport().set_input_as_handled()
 				is_grabbed = true
 				Global.emit_signal("monk_grabbed", self)

@@ -6,6 +6,7 @@ extends TextureButton
 @onready var have_monk_jing = preload("res://Asset/Profile/MonkJing.png")
 
 @onready var no_occupied = preload("res://Asset/Profile/Frame.png")
+@onready var monk_out_building_sound = $MonkOutBuildingSound
 
 var parent_building
 var monk_code: int = 0
@@ -33,6 +34,7 @@ func _on_pressed():
 	if parent_building:
 		parent_building.is_contain_num -= 1
 		parent_building.registered_monk_release(index)
+		monk_out_building_sound.play()
 	
 func check_texture(monk_code: int):
 	if is_occupied != true:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnydyp7pvylm2"]
+[gd_scene load_steps=16 format=3 uid="uid://dnydyp7pvylm2"]
 
 [ext_resource type="Script" path="res://Building/building_luohantang.gd" id="1_g83cj"]
 [ext_resource type="Texture2D" uid="uid://c31fkocp8ndv7" path="res://Asset/Building/LuoHanTang.png" id="2_fskpy"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bnnec8lk4yviu" path="res://Asset/UI/downgrade_normal.png" id="5_2mayg"]
 [ext_resource type="Texture2D" uid="uid://b2u0ky0mx80hd" path="res://Asset/UI/work_normal.png" id="5_dnnug"]
 [ext_resource type="Texture2D" uid="uid://bgv6ksq06pnuk" path="res://Asset/UI/work_hover.png" id="6_nvj16"]
+[ext_resource type="AudioStream" uid="uid://cg3qyjgja7pu5" path="res://Asset/Sound/ClickSound.mp3" id="10_k8rs3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0wav0"]
 atlas = ExtResource("2_fskpy")
@@ -96,6 +97,9 @@ texture_hover = ExtResource("6_nvj16")
 layout_mode = 2
 texture_normal = ExtResource("5_2mayg")
 texture_hover = ExtResource("4_dcur6")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_k8rs3")
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="pressed" from="MenuPanel/HBoxContainer/WorkBtn" to="." method="_on_work_btn_pressed"]

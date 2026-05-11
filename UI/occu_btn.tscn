@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dspncdxhl27c"]
+[gd_scene load_steps=3 format=3 uid="uid://dspncdxhl27c"]
 
 [ext_resource type="Script" path="res://UI/occu_btn.gd" id="2_56e24"]
+[ext_resource type="AudioStream" uid="uid://dfpvcsjq57iaj" path="res://Asset/Sound/MonkOutBuilding.mp3" id="2_lh13q"]
 
 [node name="OccuBtn" type="TextureButton"]
+z_index = 3
+mouse_filter = 2
 script = ExtResource("2_56e24")
+
+[node name="MonkOutBuildingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lh13q")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

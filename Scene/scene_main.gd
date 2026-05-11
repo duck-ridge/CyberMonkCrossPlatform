@@ -1,11 +1,12 @@
 extends Node2D
 
-var registered_monk
+
 
 var scroll_x
 @onready var gongde_label = $CanvasLayer/HUD/HBox/GongdeLabel
 @onready var xianghuo_label = $CanvasLayer/HUD/HBox/XianghuoLabel
 @onready var monk_little = preload("res://Char/monk_little.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Global.connect("monk_grabbed", register_monk)
@@ -14,6 +15,7 @@ func _ready():
 	Global.connect("luohantang_panel", check_luohan_panel)
 	Global.connect("update_resource", update_resource_label)
 	Global.connect("send_a_monk", generate_a_monk)
+	Global.connect("is_converting_resource", UI_scale_in_converting)
 	#Global.gongde_sum = DataLoader.main_csv.get("gongde_sum")
 	update_gongde(0)
 	
@@ -84,12 +86,12 @@ func check_through_buildings(pos):
 	var min_index = dist_to_b.find(min_value)
 	
 	if min_value < 60:
-		b_pool[min_index].monk_dragged_in(registered_monk, pos)
+		b_pool[min_index].monk_dragged_in(Global.registered_monk, pos)
 	
 func drop_monk(pos: Vector2):
-	if registered_monk != null:
+	if Global.registered_monk != null:
 		check_through_buildings(pos)
-		registered_monk = null
+		Global.registered_monk = null
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
@@ -114,7 +116,7 @@ func _physics_process(delta):
 		$CanvasLayer/HScrollBar.value += scroll_x
 		$CanvasLayer/HScrollBar.emit_signal("scrolling")
 func register_monk(monk):
-	registered_monk = monk
+	Global.registered_monk = monk
 
 
 func _on_muyu_button_pressed():
@@ -150,3 +152,8 @@ func generate_a_monk(pos: Vector2):
 	tween.set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(monk_little_inst, "scale", Vector2.ONE, 0.2).from(Vector2.ZERO)
 	
+func UI_scale_in_converting(is_converting: bool):
+	if is_converting == true:
+		$CanvasLayer/HUD.scale = Vector2.ONE * 1.4
+	else:
+		$CanvasLayer/HUD.scale = Vector2.ONE

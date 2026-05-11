@@ -5,7 +5,7 @@ var is_occupied: bool = false
 var can_contain_num: int
 var is_contain_num: int = 0
 var occupied_monk: CharacterBody2D
-var gongde_progress: int = 50:
+var gongde_progress: int = 0:
 	set(value):
 		gongde_progress = value
 		$GongdeProgress.value = gongde_progress
@@ -16,6 +16,9 @@ enum MonkType {
 	YUNYOU,
 	JING
 }
+
+@onready var monk_to_building_sound = $MonkToBuildingSound
+@onready var click_sound = $ClickSound
 
 var is_converting_resource: bool = false
 func _ready():
@@ -62,6 +65,7 @@ func monk_dragged_in(registered_monk: CharacterBody2D, specific_drop_pos: Vector
 		is_occupied = true
 	
 	occupied_monk = registered_monk
+	monk_to_building_sound.play()
 	if occupied_monk.get_parent():
 		occupied_monk.get_parent().remove_child(registered_monk)
 		$MonkResidence.add_child(registered_monk)
@@ -110,25 +114,37 @@ func refill_based_on_is_contain_num(contain_num: int):
 				#show_menu()
 @onready var long_press_timer = $LongPressTimer
 var is_long_press_triggered = false # 防止一次按压触发多次
+var is_press_started_here := false
 func _on_click_area_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			# --- 按下瞬间 ---
+			# 记录：按下是从这里开始的
+			is_press_started_here = true
 			is_long_press_triggered = false
-			long_press_timer.start() # 开始计时
-			print("计时开始...")
-			
+			long_press_timer.start()
+			Global.emit_signal("is_converting_resource", true)
+			is_converting_resource = true
 		elif event.is_released():
-			# --- 松开瞬间 ---
+			# 如果不是从这里按下的
+			# 就不是 short click
+			if not is_press_started_here:
+				return
+			# 用完后重置
+			is_press_started_here = false
 			if not is_long_press_triggered:
-				# 如果计时器还没结束就松开了，说明是轻按
 				long_press_timer.stop()
+				
 				_on_short_click()
 			else:
-				# 如果已经触发过长按了，松开时通常不做事
+				Global.emit_signal("is_converting_resource", false)
 				is_converting_resource = false
 				
-				
+func _unhandled_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.is_released():
+			Global.emit_signal("is_converting_resource", false)
+			is_converting_resource = false
+
 func _on_long_press_timer_timeout():
 	is_long_press_triggered = true
 	_on_long_press_action()
@@ -211,5 +227,5 @@ func calculate_resource_based_on_monk():
 	return gongde_every_turn
 	
 func _on_produce_gongde_timeout():
-	print("X")
 	gongde_progress += calculate_resource_based_on_monk()
+
