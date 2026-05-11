@@ -110,15 +110,15 @@ alignment = 1
 
 [node name="OccuBtn1" parent="PanelContainer/VBoxContainer" instance=ExtResource("7_e2c1y")]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 0
 
 [node name="OccuBtn2" parent="PanelContainer/VBoxContainer" instance=ExtResource("7_e2c1y")]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 0
 
 [node name="OccuBtn3" parent="PanelContainer/VBoxContainer" instance=ExtResource("7_e2c1y")]
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 0
 
 [node name="MonkResidence" type="Node2D" parent="."]
 
