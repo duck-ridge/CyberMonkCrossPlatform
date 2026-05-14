@@ -133,7 +133,6 @@ func _on_muyu_timer_timeout():
 	$CanvasLayer/MuyuButton.tap_muyu()
 	
 func _on_h_scroll_bar_scrolling():
-	
 	$Camera2D.offset.x = $CanvasLayer/HScrollBar.value * 3
 
 func check_luohan_panel(panel_on_off):

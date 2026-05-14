@@ -10,6 +10,11 @@ var gongde_progress: int = 0:
 		gongde_progress = value
 		$GongdeProgress.value = gongde_progress
 
+var level: int = 1
+var max_level: int = 3
+var levelupcost: int = 20
+
+
 enum MonkType {
 	LITTLE,
 	ZHIKE,
@@ -19,12 +24,17 @@ enum MonkType {
 
 @onready var monk_to_building_sound = $MonkToBuildingSound
 @onready var click_sound = $ClickSound
-
+@onready var level_info_label = $MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo/container/VBox/LevelTo
+@onready var level_effect_label = $MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo/container/VBox/Effect
+@onready var level_cost_label = $MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo/container/VBox/Cost
+@onready var levelup_info_panel = $MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo
 var is_converting_resource: bool = false
+
 func _ready():
 	$MenuPanel.hide()
 	can_contain_num = $PanelContainer/VBoxContainer.get_child_count()
-	
+	update_levelup_panel()
+	levelup_info_panel.hide()
 	pass # Replace with function body.
 
 
@@ -229,3 +239,24 @@ func calculate_resource_based_on_monk():
 func _on_produce_gongde_timeout():
 	gongde_progress += calculate_resource_based_on_monk()
 
+
+func _on_upgrade_btn_mouse_entered():
+	update_levelup_panel()
+	levelup_info_panel.show()
+
+func _on_upgrade_btn_mouse_exited():
+	update_levelup_panel()
+	levelup_info_panel.hide()
+
+func update_levelup_panel():
+	if level >= max_level:
+		level_info_label.text = "level " + str(level)
+	else:
+		level_info_label.text = "level " + str(level) + " -> level " + str(level + 1)
+		level_cost_label.text= "level up cost " + str(levelupcost)
+	level_effect_label.text = "Sengshe allows more monks work inside"
+
+
+func _on_upgrade_btn_pressed():
+	var price_cost = floor(Global.sengshe_level_up_basic_cost * Global.building_level_up_index ^ level)
+	print(price_cost)
