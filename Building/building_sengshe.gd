@@ -2,7 +2,7 @@ extends Node2D
 class_name Sengshe
 
 var is_occupied: bool = false
-var can_contain_num: int
+var can_contain_num: int = 2
 var is_contain_num: int = 0
 var occupied_monk: CharacterBody2D
 var gongde_progress: int = 0:
@@ -12,8 +12,6 @@ var gongde_progress: int = 0:
 
 var level: int = 1
 var max_level: int = 3
-var levelupcost: int = 20
-
 
 enum MonkType {
 	LITTLE,
@@ -29,17 +27,16 @@ enum MonkType {
 @onready var level_cost_label = $MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo/container/VBox/Cost
 @onready var levelup_info_panel = $MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo
 var is_converting_resource: bool = false
-
+var price_cost: int
 func _ready():
 	$MenuPanel.hide()
-	can_contain_num = $PanelContainer/VBoxContainer.get_child_count()
+	can_contain_num = level * 2
+	price_cost = floor(Global.sengshe_level_up_basic_cost * pow(Global.building_level_up_index, level))
 	update_levelup_panel()
+	check_residence_management()
 	levelup_info_panel.hide()
 	pass # Replace with function body.
-
-
-
-
+	
 #func monk_dragged_in(registered_monk: CharacterBody2D, specific_drop_pos: Vector2):
 	#if is_occupied == true:
 		#return
@@ -90,29 +87,18 @@ func monk_dragged_in(registered_monk: CharacterBody2D, specific_drop_pos: Vector
 	
 func refill_based_on_is_contain_num(contain_num: int):
 	var i = 0
-	for c in $PanelContainer/VBoxContainer.get_children():
-		i += 1
-		
-		if i <= contain_num:
+	for v in $PanelContainer/HBox.get_children():
+		for c in v.get_children():
+			i += 1
 			
-			var char = $MonkResidence.get_child(i - 1)
-			#var monk_code
-			var monk_code =  char.monk_code
-			#match char.monk_code:
-				#0:
-					#monk_code = MonkType.LITTLE
-				#1:
-					#monk_code = MonkType.ZHIKE
-				#2:
-					#monk_code = MonkType.YUNYOU
-				#3:
-					#monk_code = MonkType.JING
-				#"_":
-					#pass
-			c.monk_code = monk_code
-			c.is_occupied = true
-		else:
-			c.is_occupied = false
+			if i <= contain_num:
+				
+				var char = $MonkResidence.get_child(i - 1)
+				var monk_code =  char.monk_code
+				c.monk_code = monk_code
+				c.is_occupied = true
+			else:
+				c.is_occupied = false
 			
 		
 
@@ -158,6 +144,7 @@ func _unhandled_input(event):
 func _on_long_press_timer_timeout():
 	is_long_press_triggered = true
 	_on_long_press_action()
+
 
 func _on_short_click():
 	show_menu()
@@ -220,20 +207,21 @@ func registered_monk_release(index: int):
 
 func calculate_resource_based_on_monk():
 	var gongde_every_turn: int
-	for m in $PanelContainer/VBoxContainer.get_children():
-		if m.is_occupied != true:
-			continue
-		match m.monk_code:
-			MonkType.LITTLE:
-				gongde_every_turn += 1
-			MonkType.ZHIKE:
-				gongde_every_turn += 2
-			MonkType.YUNYOU:
-				gongde_every_turn += 3
-			MonkType.JING:
-				gongde_every_turn += 4
-			_:
-				gongde_every_turn += 0
+	for v in $PanelContainer/HBox.get_children():
+		for m in v.get_children():
+			if m.is_occupied != true:
+				continue
+			match m.monk_code:
+				MonkType.LITTLE:
+					gongde_every_turn += 1
+				MonkType.ZHIKE:
+					gongde_every_turn += 2
+				MonkType.YUNYOU:
+					gongde_every_turn += 3
+				MonkType.JING:
+					gongde_every_turn += 4
+				_:
+					gongde_every_turn += 0
 	return gongde_every_turn
 	
 func _on_produce_gongde_timeout():
@@ -250,13 +238,31 @@ func _on_upgrade_btn_mouse_exited():
 
 func update_levelup_panel():
 	if level >= max_level:
+		level = max_level
 		level_info_label.text = "level " + str(level)
 	else:
-		level_info_label.text = "level " + str(level) + " -> level " + str(level + 1)
-		level_cost_label.text= "level up cost " + str(levelupcost)
+		level_info_label.text = "level" + str(level) + " -> level" + str(level + 1)
+		level_cost_label.text= "level up cost " + str(price_cost)
 	level_effect_label.text = "Sengshe allows more monks work inside"
 
 
 func _on_upgrade_btn_pressed():
-	var price_cost = floor(Global.sengshe_level_up_basic_cost * Global.building_level_up_index ^ level)
+	price_cost = floor(Global.sengshe_level_up_basic_cost * pow(Global.building_level_up_index, level))
+	if !Global.gongde_sum >= price_cost:
+		return
+	if level >= max_level:
+		level_info_label.text = "level " + str(level)
+		return
 	print(price_cost)
+	Global.gongde_sum -= price_cost
+	can_contain_num += 2
+	level += 1
+	update_levelup_panel()
+	check_residence_management()
+
+func check_residence_management():
+	var slots = $PanelContainer/HBox.get_children()
+	for i in range(slots.size()):
+		# 如果当前索引小于等级，就显示；否则隐藏
+		# 假设 level = 2，那么索引 0, 1 会显示，2, 3... 会隐藏
+		slots[i].visible = i < level

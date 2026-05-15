@@ -108,8 +108,32 @@ func _unhandled_input(event):
 func _input(event):
 	scroll_x = Input.get_axis("ui_left", "ui_right")
 	if Input.is_action_pressed("ui_accept"):
-		DataLoader.save_dict_to_csv("res://DATA/MainDATA.csv", {"gongde_sum": Global.gongde_sum})
-	
+		save_game_data()
+
+
+
+
+func save_game_data():
+	# 1. 构造一个包含所有数据的字典
+	var data_to_save = {
+		"gongde_sum": Global.gongde_sum,
+		"xianghuo_sum": Global.xianghuo_sum,
+		"daxiongbaodian_build_gongde_price": Global.daxiongbaodian_build_gongde_price,
+		"sengshe_build_gongde_price": Global.sengshe_build_gongde_price,
+		"luohantang_build_gongde_price": Global.luohantang_build_gongde_price,
+		"muyu_level": Global.MuyuLevel,
+		"monk_produce_price": Global.monk_produce_price,
+		"monk_produce_change_price": Global.monk_produce_change_price,
+		"ini_monk_amount": Global.ini_monk_amount,
+		"building_level_up_index": Global.building_level_up_index,
+		"sengshe_level_up_basic_cost": Global.sengshe_level_up_basic_cost
+	}
+	# 2. 只调用一次保存函数
+	DataLoader.save_dict_to_csv("res://DATA/MainDATA.csv", data_to_save)
+	print("游戏数据已保存！")
+
+
+
 func _physics_process(delta):
 	if scroll_x != 0 and scroll_x != null:
 		

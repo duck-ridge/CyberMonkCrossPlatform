@@ -97,13 +97,13 @@ anchor_left = 1.562
 anchor_top = 1.344
 anchor_right = 1.562
 anchor_bottom = 1.344
-offset_left = 11.0
-offset_top = 86.0
-offset_right = 91.0
+offset_left = -9.0
+offset_top = 85.0
+offset_right = 111.0
 offset_bottom = 145.0
 grow_horizontal = 2
 grow_vertical = 0
-pivot_offset = Vector2(33, 30)
+pivot_offset = Vector2(60, 31)
 metadata/_edit_group_ = true
 
 [node name="VBox" type="VBoxContainer" parent="MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo/container"]
@@ -115,15 +115,17 @@ alignment = 1
 [node name="LevelTo" type="Label" parent="MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo/container/VBox"]
 custom_minimum_size = Vector2(120, 2.08165e-12)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v46oo")
 theme_override_font_sizes/font_size = 16
-text = "hello"
+text = "level"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Cost" type="Label" parent="MenuPanel/HBoxContainer/UpgradeBtn/LevelUpInfo/container/VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("6_v46oo")
 theme_override_font_sizes/font_size = 12
-text = "sad"
+text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -132,6 +134,7 @@ custom_minimum_size = Vector2(120, 2.08165e-12)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_v46oo")
 theme_override_font_sizes/font_size = 12
+text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -157,19 +160,40 @@ offset_top = -40.0
 offset_right = 78.0
 grow_horizontal = 2
 grow_vertical = 0
-metadata/_edit_group_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="HBox" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBox1" type="VBoxContainer" parent="PanelContainer/HBox"]
+layout_mode = 2
+alignment = 2
+
+[node name="OccuBtn1" parent="PanelContainer/HBox/VBox1" instance=ExtResource("7_e2c1y")]
+layout_mode = 2
+
+[node name="OccuBtn2" parent="PanelContainer/HBox/VBox1" instance=ExtResource("7_e2c1y")]
+layout_mode = 2
+
+[node name="VBox2" type="VBoxContainer" parent="PanelContainer/HBox"]
 layout_mode = 2
 alignment = 1
+metadata/_edit_group_ = true
 
-[node name="OccuBtn1" parent="PanelContainer/VBoxContainer" instance=ExtResource("7_e2c1y")]
+[node name="OccuBtn1" parent="PanelContainer/HBox/VBox2" instance=ExtResource("7_e2c1y")]
 layout_mode = 2
 
-[node name="OccuBtn2" parent="PanelContainer/VBoxContainer" instance=ExtResource("7_e2c1y")]
+[node name="OccuBtn2" parent="PanelContainer/HBox/VBox2" instance=ExtResource("7_e2c1y")]
 layout_mode = 2
 
-[node name="OccuBtn3" parent="PanelContainer/VBoxContainer" instance=ExtResource("7_e2c1y")]
+[node name="VBox3" type="VBoxContainer" parent="PanelContainer/HBox"]
+layout_mode = 2
+alignment = 1
+metadata/_edit_group_ = true
+
+[node name="OccuBtn1" parent="PanelContainer/HBox/VBox3" instance=ExtResource("7_e2c1y")]
+layout_mode = 2
+
+[node name="OccuBtn2" parent="PanelContainer/HBox/VBox3" instance=ExtResource("7_e2c1y")]
 layout_mode = 2
 
 [node name="MonkResidence" type="Node2D" parent="."]

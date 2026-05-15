@@ -42,6 +42,25 @@ collision_layer = 5
 position = Vector2(1118.5, 300)
 shape = SubResource("RectangleShape2D_wjga7")
 
+[node name="BuildingSystem" type="Node2D" parent="."]
+
+[node name="BuildingDaXiongBaoDian" parent="BuildingSystem" instance=ExtResource("5_7xc3w")]
+position = Vector2(911, 184)
+
+[node name="BuildingSengShe" parent="BuildingSystem" instance=ExtResource("4_onao2")]
+position = Vector2(566, 288)
+
+[node name="BuildingLuohantang" parent="BuildingSystem" instance=ExtResource("11_lyodh")]
+position = Vector2(111, 187)
+
+[node name="EmptyBuildingSystem" type="Node2D" parent="."]
+
+[node name="BuildingEmpty" parent="EmptyBuildingSystem" instance=ExtResource("4_5uq1h")]
+position = Vector2(1214, 287)
+
+[node name="BuildingEmpty2" parent="EmptyBuildingSystem" instance=ExtResource("4_5uq1h")]
+position = Vector2(163, 287)
+
 [node name="MonkSystem" type="Node2D" parent="."]
 
 [node name="MonkLittle" parent="MonkSystem" instance=ExtResource("3_2dhyy")]
@@ -61,25 +80,6 @@ position = Vector2(402, 225)
 monk_code = null
 
 [node name="MonkZhike" parent="MonkSystem" instance=ExtResource("7_xj2tc")]
-
-[node name="BuildingSystem" type="Node2D" parent="."]
-
-[node name="BuildingDaXiongBaoDian" parent="BuildingSystem" instance=ExtResource("5_7xc3w")]
-position = Vector2(911, 184)
-
-[node name="BuildingSengShe" parent="BuildingSystem" instance=ExtResource("4_onao2")]
-position = Vector2(566, 288)
-
-[node name="BuildingLuohantang" parent="BuildingSystem" instance=ExtResource("11_lyodh")]
-position = Vector2(111, 187)
-
-[node name="EmptyBuildingSystem" type="Node2D" parent="."]
-
-[node name="BuildingEmpty" parent="EmptyBuildingSystem" instance=ExtResource("4_5uq1h")]
-position = Vector2(1214, 287)
-
-[node name="BuildingEmpty2" parent="EmptyBuildingSystem" instance=ExtResource("4_5uq1h")]
-position = Vector2(163, 287)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

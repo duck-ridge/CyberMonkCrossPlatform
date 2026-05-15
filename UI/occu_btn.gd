@@ -21,7 +21,7 @@ var is_occupied: bool = false:
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	check_texture(monk_code)
-	parent_building = get_node("../../..")
+	parent_building = get_node("../../../..")
 
 
 func _on_pressed():
